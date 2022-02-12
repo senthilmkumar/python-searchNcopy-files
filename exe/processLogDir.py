@@ -2,6 +2,7 @@ import os
 import sys
 import shutil
 
+
 clear = lambda: os.system('clear')
 clear()
 
@@ -19,7 +20,13 @@ clear()
 thisdir = sys.argv[1]
 print ("Searching the files in : "+thisdir)
 
-destDir = sys.argv[2]
+destDir = "/path/to/your/dest/dir"
+try: 
+    os.makedirs(destDir)
+except OSError:
+    if not os.path.isdir(destDir):
+        raise
+
 search_result_files_path = []
 search_result_file_names = []
 
